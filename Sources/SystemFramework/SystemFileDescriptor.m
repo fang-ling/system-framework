@@ -1,6 +1,6 @@
 /*===----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------===*
  *
- *  SystemFramework.h
+ *  SystemFileDescriptor.m
  *  system-framework
  *
  *  Created by Fang Ling on 2026/11/1.
@@ -16,7 +16,28 @@
  *
  *===----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------===*/
 
-#ifndef SYSTEM_FRAMEWORK_H
-#define SYSTEM_FRAMEWORK_H
+#import "SystemFramework/SystemFileDescriptor.h"
 
-#endif
+C_ASSUME_NONNULL_BEGIN
+
+@interface SystemFileDescriptor ()
+
+@property (nonatomic, assign, readwrite) CInteger rawValue;
+
+@end
+
+@implementation SystemFileDescriptor
+
+- (instancetype)initWithRawValue:(CInteger)rawValue {
+  if (!(self = [super init])) {
+    return nil;
+  }
+
+  self.rawValue = rawValue;
+
+  return self;
+}
+
+@end
+
+C_ASSUME_NONNULL_END
