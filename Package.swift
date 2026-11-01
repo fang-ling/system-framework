@@ -1,4 +1,4 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.3
 
 //===----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------===//
 //
@@ -25,7 +25,18 @@ let package = Package(
   products: [
     .library(name: "SystemFramework", targets: ["SystemFramework"])
   ],
+  dependencies: [
+    .package(path: "../c-framework"),
+    .package(path: "../objective-c-framework")
+  ],
   targets: [
-    .target(name: "SystemFramework", publicHeadersPath: "Includes")
+    .target(
+      name: "SystemFramework",
+      dependencies: [
+        .product(name: "CFramework", package: "c-framework"),
+        .product(name: "ObjectiveCFramework", package: "objective-c-framework")
+      ],
+      publicHeadersPath: "Includes"
+    )
   ]
 )
